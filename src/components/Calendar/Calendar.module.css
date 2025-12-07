@@ -1,0 +1,216 @@
+.calendar {
+  max-width: 800px;
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem; 
+  row-gap: 1rem;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.pickerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.pickerContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: var(--blue);
+}
+
+.calendarButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.closeModal {
+  padding: 0.3rem 0.75rem;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addButton {
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+}
+
+section > h3 {
+  text-align: start;
+}
+
+.availabilityContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+}
+
+.availabilityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.plusButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  color: var(--black);
+  font-weight: 500;
+  gap: 0.5rem;
+}
+
+.toggleButton {
+  color: var(--dark-blue);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0;
+}
+
+.toggleButton:hover {
+  text-decoration: underline;
+}
+
+.possibleMatchesContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  color: var(--black);
+  row-gap: 0.75rem;
+}
+
+.match {
+  padding: 0.5rem;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.match > h4 {
+  color: var(--light-blue);
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  text-align: start;
+}
+
+.matchTime {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--light-blue);
+  padding-bottom: 0.5rem;
+}
+.matchTime:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.timeContainer {
+  grid-area: time;
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.matchTime > h4 {
+  width: 100%;
+}
+
+.addToCalendarButton {
+  width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.usersList {
+  grid-area: users;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-items: center;
+}
+
+.user {
+  padding: 0.25rem 0.5rem;
+  width: max-content;
+  overflow-wrap: anywhere;
+  border-radius: 0.25rem;
+}
+
+.bookingSwitches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

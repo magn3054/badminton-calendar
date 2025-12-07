@@ -1,0 +1,361 @@
+.tournamentContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 1rem;
+}
+
+.displayOptions {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.gamesViewBtn {
+    background-color: var(--dark-blue);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.scoreViewBtn {
+    background-color: var(--dark-blue);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.chosenViewBtn {
+    border: var(--blue) 2px solid;
+}
+
+/* Tournament chooser */
+.selectorRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* Wrapper just positions arrow; select draws the blue pill */
+.selectWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Blue pill — full clickable area */
+.selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--blue);
+  color: var(--black);
+  border: none;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  text-transform: capitalize;
+  text-align: center;
+  padding: .5rem 2rem .5rem 1rem; /* room for chevron */
+}
+.selector:focus { outline: none; }
+.selector::-ms-expand { display: none; } /* old IE/Edge */
+
+/* Chevron inside the pill */
+.chevron {
+  position: absolute;
+  right: .6rem;
+  height: 0.75rem;
+  transform: rotate(0deg);
+  pointer-events: none;
+  color: var(--dark-blue);
+  /* will-change: transform; */
+}
+
+/* Open with elastic bounce */
+@keyframes chevron-open-bounce {
+  0%   { transform: rotate(0deg); }
+  55%  { transform: rotate(200deg); } /* big overshoot */
+  75%  { transform: rotate(172deg); } /* rebound past target */
+  88%  { transform: rotate(186deg); } /* tiny overshoot */
+  100% { transform: rotate(180deg); }
+}
+
+/* Close with elastic bounce */
+@keyframes chevron-close-bounce {
+  0%   { transform: rotate(180deg); }
+  50%  { transform: rotate(-20deg); } /* big overshoot back */
+  72%  { transform: rotate(6deg); }   /* rebound */
+  88%  { transform: rotate(-3deg); }  /* tiny overshoot */
+  100% { transform: rotate(0deg); }
+}
+
+/* Trigger animations based on your .open class */
+.selectWrap.open .chevron {
+  animation: chevron-open-bounce 550ms cubic-bezier(.2,.65,.2,1) both;
+}
+.selectWrap:not(.open) .chevron {
+  animation: chevron-close-bounce 550ms cubic-bezier(.2,.65,.2,1) both;
+}
+
+/* GAMES */
+.gamesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dayContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 1rem;
+}
+
+.dayHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dayHeader h2 {
+    color: var(--black);
+    text-transform: capitalize;
+}
+
+.clearBtn {
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.roundContainer {
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.dateHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    text-transform: capitalize;
+}
+
+.roundHeader {
+    color: var(--black);
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.25rem;
+}
+
+.games {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 0 0.5rem;
+}
+
+/* GAME */
+.gameContainer {
+    width: 100%;
+    height: fit-content;
+}
+
+.gameHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: fit-content;
+    padding: 0.5rem 1rem;
+    background-color: var(--light-blue);
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: var(--box-shadow);
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--black-shadow);
+}
+
+.scoreInput {
+    all: unset;
+    width: 100%;
+    text-align: center;
+    background-color: var(--light-blue);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.gameBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--white);
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.gameTeams {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 1rem;
+}
+
+.teamLeft,
+.teamRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: fit-content;
+    font-weight: bold;
+}
+
+.pairedAvatar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+/* both halves */
+.pairedAvatar .half {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pairedAvatar img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* 80° angled split */
+.pairedAvatar .left {
+    /* clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%); */
+    transform: scale(0.65) translateX(-25%) translateY(-25%);
+}
+
+.pairedAvatar .right {
+    /* clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%); */
+    transform: scale(0.65) translateX(25%) translateY(25%);
+}
+
+
+.teamLeft h2,
+.teamRight h2 {
+    color: var(--black);
+    z-index: 3;
+}
+
+.finalizeBtn {
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    font-weight: bold;
+}
+
+.finalized {
+    background-color: var(--green);
+    filter: opacity(0.65);
+    color: var(--black);
+    font-weight: normal;
+    box-shadow: none;
+}
+
+/* SCOREBOARD */
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    /* gap: 1rem; */
+}
+
+.scoreboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-blue);
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0 0.5rem 0.25rem;
+    box-shadow: var(--box-shadow);
+}
+
+.scoreboard h2 {
+    color: var(--white);
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.scoreTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+thead {
+    background-color: rgba(255, 0, 0, 0);
+    padding: 0rem 0.5rem;
+}
+
+thead tr {
+    border-bottom: 2px solid var(--black-shadow);
+    padding: 0rem 0.5rem;
+}
+
+thead th {
+    text-align: center;
+    padding: 0.75rem 0.5rem 0;
+    color: var(--black);
+    font-size: 1.1rem;
+}
+
+thead th:first-of-type {
+    text-align: left;
+}
+
+tbody {
+    text-align: left;
+}
+
+tbody td {
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    color: var(--black);
+}
+
+tbody td:first-of-type {
+    text-align: left;
+}
