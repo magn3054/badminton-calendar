@@ -1,0 +1,132 @@
+.adminContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--light-blue);
+    padding: 0.5rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.addUserForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.addUserForm label:not(.radioLabel) {
+    display: grid;
+    grid-template-areas: "label input";
+    grid-template-columns: 25% 1fr;
+    width: 100%;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
+.addUserForm label h4 {
+    grid-area: label;
+    display: flex;
+    align-items: flex-start;
+    text-align: start;
+    font-size: 1.05rem;
+}
+
+.addUserForm>label>input {
+    grid-area: input;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.radioLabel input {
+    display: none;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.radioButton {
+  height: 2rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--blue);
+  cursor: pointer;
+  transition: background-color 0s;
+}
+
+.radioButton.checked {
+  background-color: var(--black);
+  transition: background-color 0.5s;
+}
+
+/* Hide the default checkbox */
+.labelAdmin input {
+    position: absolute;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.adminIndicator {
+    position: relative;
+    font-size: 20px;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background: var(--blue);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When the checkbox is checked, add a blue background */
+.labelAdmin input:checked~.adminIndicator {
+    box-shadow: var(--box-shadow);
+    background-color: var(--black);
+}
+
+/* Create the adminIndicator/indicator (hidden when not checked) */
+.adminIndicator:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the adminIndicator when checked */
+.labelAdmin input:checked~.adminIndicator:after {
+    display: block;
+}
+
+/* Style the adminIndicator/indicator */
+.labelAdmin .adminIndicator:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid var(--white);
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+
+.submitButton {
+    background-color: var(--green);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}

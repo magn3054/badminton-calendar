@@ -1,0 +1,49 @@
+.burger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 2.75rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 900;
+    transition: transform 0.75s ease;
+    margin-right: auto;
+}
+
+.topLine,
+.midLine,
+.botLine {
+    position: relative;
+    height: 0.75rem;
+    width: 3rem;
+    background-color: var(--black);
+    border-radius: 1rem;
+}
+
+.topBall,
+.midBall,
+.botBall {
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--white);
+    transition: transform 0.5s ease;
+}
+
+.open .topBall,
+.open .midBall,
+.open .botBall {
+    transform: translateX(2.25rem);
+}
+
+.midBall {
+    transition-delay: 100ms;
+}
+.botBall {
+    transition-delay: 200ms;
+}

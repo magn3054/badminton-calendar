@@ -1,0 +1,347 @@
+/* Fine Modals */
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 0 0.5rem 1rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90dvh;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    row-gap: 0.5rem;
+    overflow-y: scroll;
+}
+
+.fineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.fineHeader>h2 {
+    width: 100%;
+    display: flex;
+    text-align: start;
+    overflow-wrap: anywhere;
+}
+
+.fineTitle {
+    all: unset;
+    width: 100%;
+    display: flex;
+    text-align: start;
+    overflow-wrap: anywhere;
+    color: var(--black);
+    border: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.fineItem:has(.newFineButton) {
+    margin-bottom: 1rem;
+    background-color: var(--green);
+    justify-content: center;
+}
+
+.newFineButton {
+    padding: 0;
+    font-size: 1.25rem;
+    color: var(--black);
+}
+
+.fineItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.addButton {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.closeButton {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--red);
+}
+
+.fineItem:has(.fineInfo) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+}
+
+.fineInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.descriptionSection {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.fineDescription {
+    all: unset; 
+    font-weight: 500;
+    padding-left: 0.25rem;
+    width: 100%;
+    text-align: left;
+}
+
+.descriptionSection > h4 {
+    font-weight: 500;
+    padding-left: 0.25rem;
+    text-align: left;
+}
+
+.descriptionSection:has(textarea) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.priceSection {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    width: 100%;
+    border-radius: 0 0 0.5rem 0.5rem ;
+    align-self: flex-end;
+    padding-right: 0.25rem;
+    align-items: baseline;
+}
+
+.priceSection input {
+    all: unset; 
+    font-weight: 500;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: right;
+}
+
+.adminActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.saveButton {
+    width: fit-content;
+    align-self: center;
+    display: flex;
+    font-weight: 500;
+    background-color: var(--green);
+}
+
+.deleteFineButton {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    margin: 0 1rem 0 0;
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--red);
+}
+
+/* ADD FINE FORM */
+.addFineForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.formContent>div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.formContent>div>label {
+    justify-self: start;
+}
+
+.formContent>div>input {
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0.5rem;
+    width: 100%;
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.labelMultiply {
+    grid-column: 1 / span 2;
+    display: grid;
+    width: 100%;
+    text-align: left;
+}
+
+/* Hide the default checkbox */
+.labelMultiply input {
+    position: absolute;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 1;
+    top: 0;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.multiplyIndicator {
+    grid-column: 2;
+    justify-self: start;
+    position: relative;
+    font-size: 20px;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background: var(--blue);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When the checkbox is checked, add a blue background */
+.labelMultiply input:checked~.multiplyIndicator {
+    box-shadow: var(--box-shadow);
+    background-color: var(--black);
+}
+
+/* Create the multiplyIndicator/indicator (hidden when not checked) */
+.multiplyIndicator:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the multiplyIndicator when checked */
+.labelMultiply input:checked~.multiplyIndicator:after {
+    display: block;
+}
+
+/* Style the multiplyIndicator/indicator */
+.labelMultiply .multiplyIndicator:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid var(--white);
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+.multiplierStep {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: var(--dark-blue);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.multiplierStep > * {
+    flex: 1;
+    min-width: max-content;
+    text-align: left;
+    height: 100%;
+    align-self: center;
+    color: var(--blue);
+}
+
+.multiplierStep .multiplierFineTitle {
+    width: 100%;
+    flex: 1 100%;
+    color: var(--white);
+}
+
+.multiplierStep input {
+    all: unset;
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0.5rem;
+    width: 50%;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+}
+
+.multiplierStep button {
+    all: unset;
+    display: flex;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    justify-self: center;
+}

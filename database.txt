@@ -1,0 +1,255 @@
+Firestore Structure:
+Collection: users
+Each document = 1 registered user.
+Document ID example: ix31DMZxxebrnlqF3HYE1nhCL42
+Fields: 
+  admin (boolean) → whether the user is an admin.
+  details (array or map) →
+  [0].birth (timestamp or string) → birth date.
+  [0].signaturemove (string) → e.g. “Sveder meget”.
+  [0].trashtalk (string or number) → rating or phrase.
+  email (string) → user’s email.
+  fines (map) →
+  finesMaster (boolean) → whether user controls fines.
+  image (string) → URL of the profile picture (Google Drive link).
+  username (string) → display name.
+
+(Other user docs in the same collection have the same structure but different values.)
+
+Collection: availability
+Each document = a time slot where at least 4 players registered to play.
+Document ID example: 1F3PsBf5yeurNAvM10Ox
+Fields:
+  date (string) → e.g. "2025-09-16".
+  startTime (string) → e.g. "18".
+  endTime (string) → e.g. "20".
+  name (string) → player name (redundant but handy).
+  uid (string) → user’s ID (links to users doc).
+
+(Other docs represent other time slots with different players.)
+
+Key Info:
+A document in availability is created only when at least 4 players register for the same day/time slot.
+
+This collection acts as a schedule or confirmation list for sessions.
+
+Visual Summary
+/users (collection)
+  /<userId> (doc)
+    admin: boolean
+    details: [ { birth, signaturemove, trashtalk } ]
+    email: string
+    fines: { finesMaster: boolean }
+    image: string
+    username: string
+
+/availability (collection)
+  /<availabilityId> (doc)
+    date: string (YYYY-MM-DD)
+    startTime: string (HH)
+    endTime: string (HH)
+    name: string (player name)
+    uid: string (links to users/<userId>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#######################################################################################
+
+
+Your Firestore database has three top-level collections:
+
+/availability
+/fines
+/users
+
+1. /availability
+
+Each document represents a user’s availability.
+
+Fields:
+
+date (string) – e.g., "2025-08-27"
+
+startTime (string) – e.g., "14:00"
+
+endTime (string) – e.g., "16:00"
+
+name (string) – User’s name
+
+uid (string) – The user’s document ID from /users
+
+2. /fines
+
+Stores all possible fines and their details.
+
+Fields:
+
+description (string) – Explanation of the fine
+
+name (string) – Fine title, e.g., "Late Fee"
+
+price (number) – Fine amount
+
+3. /users
+
+Each document represents a registered user.
+
+Fields:
+
+admin (boolean) – If the user is an admin
+
+email (string) – User’s email
+
+image (string) – Profile image URL
+
+details (array of maps):
+
+birth (timestamp)
+
+signaturemove (string)
+
+trashtalk (number 0–5)
+
+fines (array of maps):
+
+assigned (timestamp)
+
+fineid (string) – Reference to /fines
+
+paid (boolean)
+
+
+✅ Required Imports for React
+
+Always include these imports when interacting with Firestore:
+
+import { useState, useEffect } from "react";
+import { auth, db } from "../../firebase"; // Your Firebase config
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  arrayUnion
+} from "firebase/firestore";
+
+✅ Functions for Users & Fines
+Fetch All Fines
+const fetchFines = async () => {
+  const finesSnapshot = await getDocs(collection(db, "fines"));
+  return finesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+Fetch All Users
+const fetchUsers = async () => {
+  const usersSnapshot = await getDocs(collection(db, "users"));
+  return usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+Check Admin Status
+const fetchAdminStatus = async () => {
+  if (auth.currentUser) {
+    const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+    return userDoc.exists() && userDoc.data().admin === true;
+  }
+  return false;
+};
+
+Add Fine to a User
+const addFineToUser = async (userId, fineId) => {
+  const userRef = doc(db, "users", userId);
+  await updateDoc(userRef, {
+    fines: arrayUnion({
+      assigned: new Date(),
+      fineid: fineId,
+      paid: false,
+      quantity: 1
+    })
+  });
+};
+
+Calculate Total Fines for a User
+const getUserTotalFines = (user, fines) => {
+  if (!user.fines || user.fines.length === 0) return 0;
+  return user.fines.reduce((total, userFine) => {
+    const fineData = fines.find(f => f.id === userFine.fineid);
+    if (!fineData) return total;
+    const quantity = userFine.quantity || 1;
+    return total + fineData.price * quantity;
+  }, 0);
+};
+
+✅ Availability Management in React
+1. Fetch All Availability
+const fetchAvailability = async () => {
+  const availabilitySnapshot = await getDocs(collection(db, "availability"));
+  return availabilitySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+2. Add New Availability
+const addAvailability = async (availabilityData) => {
+  // availabilityData example:
+  // { date: "2025-08-27", startTime: "14:00", endTime: "16:00", name: "John", uid: "userId123" }
+  await addDoc(collection(db, "availability"), availabilityData);
+};
+
+3. Delete Availability
+const deleteAvailability = async (availabilityId) => {
+  await deleteDoc(doc(db, "availability", availabilityId));
+};
+
+4. Filter Availability by Date
+const fetchAvailabilityByDate = async (selectedDate) => {
+  const q = query(
+    collection(db, "availability"),
+    where("date", "==", selectedDate)
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+5. Example Usage in a Component
+useEffect(() => {
+  const loadData = async () => {
+    const [finesList, usersList, availabilityList] = await Promise.all([
+      fetchFines(),
+      fetchUsers(),
+      fetchAvailability()
+    ]);
+    setFines(finesList);
+    setUsers(usersList);
+    setAvailability(availabilityList);
+    const adminStatus = await fetchAdminStatus();
+    setIsAdmin(adminStatus);
+  };
+
+  loadData();
+}, []);
+
+✅ Notes & Best Practices
+
+Always validate auth.currentUser before admin checks.
+
+Use Promise.all() for multiple queries to improve performance.
+
+Use arrayUnion() when adding fines to avoid overwriting existing data.
+
+Use query() + where() for filtering availability by date.
+
+For large datasets, consider limit() and pagination.

@@ -1,0 +1,169 @@
+/* Fine Site */
+.finesMain {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    row-gap: 2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.allFines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    row-gap: 1.25rem;
+}
+
+.allFinesStandard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    row-gap: 0.5rem;
+}
+
+.fineSite ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    list-style: none;
+    row-gap: 0.75rem;
+}
+
+.fineItem, .addFineItem, .userItem {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-blue);
+    border-radius: 0.5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.adminAddFine {
+    background-color: var(--green);
+    color: var(--white);
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.allFinesStandardfineItem .fineName, .fineNameMaster {
+    text-align: start;
+    width: 100%;
+}
+
+.allFinesStandardfineItem .finePrice, .finePriceMaster {
+    text-align: end;
+    width: fit-content;
+}
+
+/* Master */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.addFineItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.75rem;
+}
+
+.addFineItem > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.addFineItem > div:has(.addFineMaster) {
+    justify-content: center;
+}
+
+.addFineMaster {
+    background-color: var(--green);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.fineNameMaster, .finePriceMaster, .fineDescriptionMaster {
+    color: var(--dark-blue);
+}
+
+/* Spillernes bøder */
+.playerFines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    row-gap: 1rem;
+}
+
+.userItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    width: 100%;
+    row-gap: 0.5rem;
+}
+
+.userName {
+    display: flex;
+    min-width: max-content;
+    padding-right: 2rem;
+    background-color: red;
+}
+
+.userItem > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    list-style: none;
+    row-gap: 0.75rem;
+    background-color: red;
+}
+
+.playerFineItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    background-color: var(--light-blue);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.totalFine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.totalFine > h2 {
+    padding: 0.5rem 1rem;
+    background-color: var(--red);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    margin: 0;
+    color: var(--white);
+}

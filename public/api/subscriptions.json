@@ -1,0 +1,10 @@
+[
+    {
+        "endpoint": "https:\/\/wns2-am3p.notify.windows.com\/w\/?token=BQYAAAAy5otnoihO9xHKg4PqkJjbNfLynertjQkRxv86z99hE6itT3U2Z8UBISFbqv1LQubq9IrSaqP%2fVl8%2fzTMmKjDw9qfpLAJBU%2foY%2frxmjGQJbyqyLj2quriFEM1TsYMUFAbnoWRZ0bbXG5XVJNJn7iB4uefu%2fLKLQe%2bR5tPx3x29Xoa6YAEm1o0cNgHvqF0cMyD%2fmf2QP8mXtGk8zqYHm7C6%2fC%2fHr%2brHEqKnk%2fOHkuju7BquvcY0Got%2bkVFC393knOdAF7VOqj4TfUS7rPay998RJrDYZzI6JpwxKv3HbUY8pdWMmkCOOoMamUZrypccpeg3OD%2fyIeY0deo8paEq8bJW",
+        "expirationTime": null,
+        "keys": {
+            "p256dh": "BOYgarGMDvVTGajmI3dGJV2LgUoe0oj5UnwocKl5za_GPq5JrvOZNGnrdUr4IE8iNO8Br1LuOeCUm7ikEAfzJn0",
+            "auth": "OozjstnfO4m-Y-7SoziseQ"
+        }
+    }
+]

@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.5rem;
+  width: 100%;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--dark);
+  margin: 0 auto;
+}
+
+.title2 {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--dark);
+  left: 50%;
+  top: 50%;
+  max-width: 70%;
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
+  white-space: nowrap;
+}
